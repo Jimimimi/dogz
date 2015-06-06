@@ -1,0 +1,175 @@
+<div class="row alerts-container" data-ng-controller="AlertsCtrl" data-ng-show="alerts.length">
+  <div class="col-xs-12">
+    <alert data-ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+  </div>
+</div>
+
+<div class="row">
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon green pull-left">
+					<i class="fa fa-users"></i>
+				</div>
+				<div class="title">Hi {{ownerData[0].name}}</div>
+				<!-- <div class="comment">Dogs: 2</div> -->
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon red pull-left">
+					<i class="fa fa-tasks"></i>
+				</div>
+				<div class="title"> Dogs</div>
+				<div class="comment">{{dogsData.length}}</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon orange pull-left">
+					<i class="fa fa-sitemap"></i>
+				</div>
+				<div class="title">225</div>
+				<div class="comment">Some info here</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon blue pull-left">
+					<i class="fa fa-support"></i>
+				</div>
+				<div class="title">62</div>
+				<div class="comment">Some info here</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-6">
+		<rd-widget>
+      		<rd-widget-header icon="fa-tasks" title="Dogs">
+				<a href="#">Manage</a>
+      		</rd-widget-header>
+      		<rd-widget-body classes="medium no-padding">
+				<div class="table-responsive">
+
+					<table class="table">
+                <thead>
+                    <tr>
+                        <th>Dog Name</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                    </tr>
+                </thead>
+                <tbody style="margin-top: 40px;">
+                    <tr data-ng-repeat="dog in dogsData">
+                        <td ng-click="update(pickupgroup.id)" class="col-xs-4">
+                            {{ dog.name}}
+                        </td>
+                        <td ng-click="update(pickupgroup.id)" class="col-xs-4">
+                            {{ dog.age }}
+                        </td>
+                      
+                        <td ng-click="update(pickupgroup.id)" class="col-xs-4">
+                            {{ dog.sex }}
+                    </tr>
+                </tbody>
+            </table>
+				</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-6">
+		<rd-widget>
+			<rd-widget-header icon="fa-users" title="Dog Health data">
+				<input type="text" placeholder="Search" class="form-control input-sm" />
+			</rd-widget-header>
+			<rd-widget-body classes="medium no-padding">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr><th class="text-center">ID</th><th>Vaxine</th><th>Date</th><th>Notes</th></tr>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="vax in dogsVax">
+							<td class="text-center">1</td>
+							<td>{{vax.vaxine}}</td>
+							<td>{{vax.date}}</td>
+							<td>{{vax.notes}}</td>
+
+							</tr>
+							
+						</tbody>
+					</table>
+        		</div>
+			</rd-widget-body>
+		<rd-widget>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-6">
+		<rd-widget>
+			<rd-widget-header icon="fa-users" title="Dog Health data">
+				<input type="text" placeholder="Search" class="form-control input-sm" />
+			</rd-widget-header>
+			<rd-widget-body classes="medium no-padding">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr><th class="text-center">ID</th><th>Illness</th><th>Date</th><th>Notes</th></tr>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="health in dogsHealth">
+							<td class="text-center">1</td>
+							<td>{{health.illnes}}</td>
+							<td>{{health.date}}</td>
+							<td>{{health.notes}}</td>
+
+							</tr>
+							
+						</tbody>
+					</table>
+        		</div>
+			</rd-widget-body>
+		<rd-widget>
+	</div>
+
+	<div class="col-lg-6">
+		<rd-widget>
+			<rd-widget-header icon="fa-users" title="Some other dog's data">
+				<input type="text" placeholder="Search" class="form-control input-sm" />
+			</rd-widget-header>
+			<rd-widget-body classes="medium no-padding">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr><th class="text-center">ID</th><th>Illness</th><th>Date</th><th>Notes</th></tr>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="health in dogsHealth">
+							<td class="text-center">1</td>
+							<td>{{health.illnes}}</td>
+							<td>{{health.date}}</td>
+							<td>{{health.notes}}</td>
+
+							</tr>
+							
+						</tbody>
+					</table>
+        		</div>
+			</rd-widget-body>
+		<rd-widget>
+	</div>
+
+
+</div>
+	
+</div>
