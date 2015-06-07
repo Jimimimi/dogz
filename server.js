@@ -52,7 +52,7 @@ var SymptomEvent = function(data){
 var Disease = function(data) {
   this.name = data.name || '';
   this.symptoms = data.symptoms || [];
-}
+};
 
 
 
