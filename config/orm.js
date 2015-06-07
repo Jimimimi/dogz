@@ -15,7 +15,7 @@ var users = require('../models/user'),
 var DB = orm.express('mysql://dogz:dogz123!@#@jimis.net/dogz', {
   define: function(db,models,next){
     models.user = db.define('users',user.model, {
-,      methods: user.methods
+      methods: user.methods
     });
     models.owner = db.define('owners', owner.model, {
       methods: owner.methods
@@ -41,6 +41,7 @@ var DB = orm.express('mysql://dogz:dogz123!@#@jimis.net/dogz', {
     models.comment = db.define('comments', comment.model,{
       methods: comment.methods
     });
+    models.dog.hasOne('owner',models.owner, {reverse:'dogs',field:'ownerid'})
     next();
   }
 });
