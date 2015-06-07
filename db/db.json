@@ -1,1 +1,1 @@
-{"users":[{"email":"jimi@jimis.net","password":"test","id":"c247e9b8-ed6e-4cdf-ab06-2cca79be1d1b"}]}
+{"users":[{"email":"jimi@jimis.net","password":"test","id":"c247e9b8-ed6e-4cdf-ab06-2cca79be1d1b"},{"email":"sdfsadf","password":"test","registered":1433654629036,"id":"e922a99e-3e64-4e1b-a44d-2a3bd388eaec"}],"dogs":[{"name":"Ozzy","dob":"2015-06-07T05:28:31.149Z","weight":"10","height":"67","gender":"f","breed":"","owner":"e922a99e-3e64-4e1b-a44d-2a3bd388eaec","imagelink":"","chipId":"","id":"0bf43b07-2c24-4c5d-ab0e-c5bf11da128f"}]}

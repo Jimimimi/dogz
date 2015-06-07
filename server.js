@@ -55,6 +55,82 @@ var Disease = function(data) {
 };
 
 
+app.post('/register', function(req,res,next) {
+
+  if (!db.findOne('users',{email:req.body.email}).id) {
+    var newuser = new User(req.body);
+    var user = db.save('users',newuser);
+    res.status(200).json(user);
+  } else {
+    res.status(500).json({message: 'User already exists! Try signing in instead'});
+  }
+})
+
+app.post('/login', function(req,res,next) {
+  var user = db.findOne('users',{email:req.body.email});
+  if (!user.password){
+    res.status(500).json({message: 'Cannot find email in database'});
+  } else {
+      if (user.password === req.body.password) {
+        res.status(200).json(user);
+     } else {
+        res.status(500).json({message: 'Wrong password'});
+     }
+  }
+});
+
+app.get('/users/:userId', function(req,res,next) {
+  var user = db.findOne('users', {id: req.params.userId});
+  res.status(200).json(user);
+});
+
+app.get('/users/:userId/dogs', function(req,res,next) {
+  var dogs = db.find('dogs', {owner: req.params.userId});
+  res.status(200).json(dogs);
+});
+
+app.post('/users/:userId/dogs', function(req,res,next) {
+  var newdog = new Dog(req.body);
+  newdog.owner = req.params.userId;
+  var dog = db.save('dogs', newdog)
+  res.status(200).json(dog);
+});
+
+app.get('/dogs/:dogId', function(req,res,next) {
+  var dog = db.findOne('dogs', {id:req.params.dogId});
+  if (!dog.id) {
+    res.status(500).json({message: 'Cannot find dog'});
+  } else {
+    res.status(200).json(dog);
+  }
+});
+
+app.get('/dogs/:dogId/events', function(req,res,next) {
+  var ev = db.find('events', {dog: req.params.dogId});
+  res.status(200).json(ev);
+});
+
+app.post('/dogs/:dogId/events', function(req,res,next) {
+  var newEv = new DogEvent(req.body);
+  newEv.dog = req.params.dogId;
+  var ev = db.save('events', newEv);
+
+  res.status(200).json(ev);
+});
+
+app.get('/dogs/:dogId/symptomevents', function(req,res,next){
+  var symptoms = db.find('symptomEvents', {dog: req.params.dogId});
+  res.status(200).json(symptoms);
+});
+
+app.post('/dogs/:dogId/symptomevents', function(req,res,next) {
+  var newSym = new SymptomEvent(req.body);
+  newSym.dog = req.params.dogId;
+  var sym = db.save('events', newSym);
+
+  res.status(200).json(sym);
+});
+
 
 // mongoose.connect("mongodb://localhost/resources");
 // var DogSchema = mongoose.Schema({
